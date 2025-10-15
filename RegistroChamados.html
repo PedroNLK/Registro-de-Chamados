@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema de Registro de Chamados</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>📋 Sistema de Registro de Chamados</h1>
+            <p class="subtitle">Gerencie e acompanhe todos os chamados diariamente</p>
+        </header>
+
+        <div class="main-content">
+            <!-- Formulário de Registro -->
+            <section class="form-section">
+                <h2>Novo Chamado</h2>
+                <form id="chamadoForm">
+                    <div class="form-group">
+                        <label for="nome">Nome:</label>
+                        <input type="text" id="nome" name="nome" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="centroCusto">Centro de Custo:</label>
+                        <input type="text" id="centroCusto" name="centroCusto" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="problema">Problema Reportado:</label>
+                        <textarea id="problema" name="problema" rows="4" required></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="telefone1">Telefone 1 para Contato:</label>
+                        <input type="tel" id="telefone1" name="telefone1" placeholder="(00) 00000-0000" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="telefone2">Telefone 2 para Contato (Opcional):</label>
+                        <input type="tel" id="telefone2" name="telefone2" placeholder="(00) 00000-0000">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="status">Status:</label>
+                        <select id="status" name="status" required>
+                            <option value="">Selecione...</option>
+                            <option value="Resolvido">Resolvido</option>
+                            <option value="Direcionado">Direcionado</option>
+                            <option value="Queda de ligação">Queda de ligação</option>
+                        </select>
+                    </div>
+
+                    <button type="submit" class="btn-submit">Registrar Chamado</button>
+                </form>
+            </section>
+
+            <!-- Estatísticas do Dia -->
+            <section class="stats-section">
+                <h2>Estatísticas de Hoje</h2>
+                <div class="stats-container">
+                    <div class="stat-card resolvido">
+                        <div class="stat-icon">✓</div>
+                        <div class="stat-info">
+                            <span class="stat-label">Resolvidos</span>
+                            <span class="stat-value" id="totalResolvidos">0</span>
+                        </div>
+                    </div>
+                    <div class="stat-card direcionado">
+                        <div class="stat-icon">→</div>
+                        <div class="stat-info">
+                            <span class="stat-label">Direcionados</span>
+                            <span class="stat-value" id="totalDirecionados">0</span>
+                        </div>
+                    </div>
+                    <div class="stat-card queda">
+                        <div class="stat-icon">✕</div>
+                        <div class="stat-info">
+                            <span class="stat-label">Queda de Ligação</span>
+                            <span class="stat-value" id="totalQueda">0</span>
+                        </div>
+                    </div>
+                    <div class="stat-card total">
+                        <div class="stat-icon">Σ</div>
+                        <div class="stat-info">
+                            <span class="stat-label">Total</span>
+                            <span class="stat-value" id="totalGeral">0</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- Filtro de Data -->
+        <section class="filter-section">
+            <h2>Histórico de Chamados</h2>
+            <div class="filter-container">
+                <label for="filtroData">Filtrar por Data:</label>
+                <input type="date" id="filtroData" name="filtroData">
+                <button id="btnFiltrar" class="btn-filter">Filtrar</button>
+                <button id="btnLimparFiltro" class="btn-clear">Mostrar Todos</button>
+            </div>
+        </section>
+
+        <!-- Lista de Registros -->
+        <section class="records-section">
+            <div class="records-header">
+                <h2>Registros</h2>
+                <button id="btnExportar" class="btn-export">Exportar CSV</button>
+            </div>
+            <div id="listaRegistros" class="records-list">
+                <p class="no-records">Nenhum chamado registrado ainda.</p>
+            </div>
+        </section>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
